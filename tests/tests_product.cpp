@@ -2,23 +2,24 @@
 #include "../src/product.h"
 namespace
 {
-    TEST(Tests_Product, Test_empleadoNomina)
-    {
-        /// AAA
+  TEST(Tests_Product, Test_empleadoNomina)
+  {
+    /// AAA
 
+    // Arrange - configurar el escenario
+   ostringstream streamTest;
+    Product *coffe = new Product(1,
+                                 500,
+                                 "coffee");
 
-        // Arrange - configurar el escenario
-      
-          //EmpleadoNomina empleadonomina(1, "Denis", "Tyler", "denis_tyler@biz.com", 1, 1, 4000.67);
-      
-      
-        // Act - ejecute la operación`-
-          // empleadonomina.CalculoPago();
-          //float actual = empleadonomina.DevolverSalarioFinal();
-          //float esperada = 3720.6231 ;
+    // Act - ejecute la operación`-
+       streamTest << coffe;
 
-        // Assert - valide los resultados
-          //EXPECT_FLOAT_EQ(esperada, actual);
-    }
+       string actual = streamTest.str();
+       string esperada = "[1] - 500 coffee" ;
+
+    // Assert - valide los resultados
+        EXPECT_EQ(esperada, actual);
+  }
 
 }
