@@ -15,11 +15,11 @@ namespace
     // Act - ejecute la operación`-
        streamTest << coffe;
 
-       string actual = streamTest.str();
-       string esperada = "[1] - 500 coffee" ;
+       string result = streamTest.str();
+       string required = "[1] - coffee 500" ;
 
     // Assert - valide los resultados
-        EXPECT_EQ(esperada, actual);
+        EXPECT_EQ(result, required);
   }
 
 }
