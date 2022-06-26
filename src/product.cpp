@@ -21,6 +21,6 @@ Product::Product()
 
 ostream& operator << (ostream &o, const Product *product)
 {
-    o << "[" << product->productId << "] - " << product->amount << " " << product->prodName;  
+    o << "[" << product->productId << "] - " << product->prodName<< " " <<product->amount ;  
     return o;
 }
