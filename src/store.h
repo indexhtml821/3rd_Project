@@ -1,7 +1,7 @@
 #ifndef STORE_H
 #define STORE_H
 
-#include <vector>
+#include <map>
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -14,28 +14,29 @@ using namespace std;
 class Store
 {
  
-  public :  vector< Product *> stockProducts;
-  public :  char storeName[20];
-  public :  char ip[24];
-  public :  char location[24];
-  public :  char phoneNumber[8];
+    map<int, Product *> stockProducts;
+    char storeName[20];
+    char ip[24];
+    char location[24];
+    char phoneNumber[8];
 
 public:
  
-    
+    ~Store();
     Store(string name,
           string ip,
           string location,
           string phoneNumber);
     Store();
     // deletePlanilla();
-    void AddProduct(Product *product);
-    void modifyProduct(Product *product);
+    void addProduct(int id , Product *product);
+    void modifyProduct(int id);
     string listProducts();
-    void deleteProduct(Product *Product);
-    void storetoBinary(ostream *storestream);
-    void loadFromBinary(istream *streamEntrada);
-    friend ostream &operator<<(ostream &o, const Product *product);
+    void deleteProduct(int id);
+    void storetoBinaryFile(ostream *storestream);
+    void loadFromBinaryFile(istream *streamEntrada);
+    friend ostream &operator<<(ostream &o, const Store *store);
+    
 };
 
 #endif
