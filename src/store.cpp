@@ -29,12 +29,13 @@ void Store::addProduct(int id, Product *product)
   this->stockProducts.insert(std::pair<int, Product *>(id, product));
 }
 
-void Store::modifyProduct(int id)
+void Store::modifyProductAmount(int id,int amount)
 {
 
-  // code here//
+   stockProducts.at(id)->amount =amount;
+
 }
-/*
+/* NECESARIO?
 string Store:: listProducts(){
 
     auto iter =this->stockProducts.begin();
@@ -50,6 +51,7 @@ string Store:: listProducts(){
 
 };
 */
+
 void Store::deleteProduct(int id)
 {
 
@@ -58,6 +60,9 @@ void Store::deleteProduct(int id)
 
 void Store::storetoBinaryFile(ostream *storestream)
 {
+   Store *store = new Store(this->storeName,this->ip,this->location,this->phoneNumber);
+
+    storestream->write((char *)store , sizeof(Product));
 
   auto iter = stockProducts.begin();
 
@@ -71,6 +76,8 @@ void Store::storetoBinaryFile(ostream *storestream)
 
 void Store::loadFromBinaryFile(istream *loadStream)
 {
+
+
 
   loadStream->seekg(0, std::ios::end);
   int fileByteAmount = loadStream->tellg();

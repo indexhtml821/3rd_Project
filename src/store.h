@@ -30,7 +30,7 @@ public:
     Store();
     // deletePlanilla();
     void addProduct(int id , Product *product);
-    void modifyProduct(int id);
+    void modifyProductAmount(int id,int amount);
     string listProducts();
     void deleteProduct(int id);
     void storetoBinaryFile(ostream *storestream);
