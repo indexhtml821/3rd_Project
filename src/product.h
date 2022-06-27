@@ -9,7 +9,7 @@ class Product
 {
 
    public: int productId ;
-    int amount ;
+   public: int amount ;
     char prodName [20];
 
 public:
