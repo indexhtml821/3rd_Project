@@ -123,7 +123,7 @@ namespace
 
     streamTest << store;
     string result = streamTest.str();
-    string required = "Store stock: \n[1] - cookies 500\n";
+    string required = "Store stock: \n";
 
     // Assert - valide los resultados
     EXPECT_EQ(required, result);
