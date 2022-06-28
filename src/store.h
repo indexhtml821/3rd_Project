@@ -10,17 +10,21 @@
 #include "product.h"
 
 using namespace std;
+using namespace prod;
 
+namespace stoe{
 class Store
 {
  
-    map<int, Product *> stockProducts;
+   
+
+public:
+
+  map<int, Product *> stockProducts;
     char storeName[20];
     char ip[24];
     char location[24];
     char phoneNumber[8];
-
-public:
  
     ~Store();
     Store(string name,
@@ -38,5 +42,5 @@ public:
     friend ostream &operator<<(ostream &o, const Store *store);
     
 };
-
+}
 #endif

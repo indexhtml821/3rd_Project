@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <iostream>
 
+using namespace stoe;
+using namespace prod;
 Store::~Store()
 {
 }
@@ -100,7 +102,7 @@ ostream &operator<<(ostream &o, const Store *store)
 
   while (iter != store->stockProducts.end())
   {
-    o << iter->second << endl;
+    o  << iter->second << endl;
     iter++;
   }
 

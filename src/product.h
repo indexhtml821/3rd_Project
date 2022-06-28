@@ -5,6 +5,7 @@
 #include <string> // for string class
 using namespace std;
 
+namespace prod{
 class Product
 {
 
@@ -23,5 +24,5 @@ public:
     friend ostream& operator << (ostream &o, const Product *product);
 
 };
-
+}
 #endif

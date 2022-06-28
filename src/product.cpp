@@ -1,6 +1,6 @@
 #include "product.h"
 #include <string.h>
-
+using namespace prod;
 Product::Product(int productId,
                  int amount,
                  string name)
