@@ -6,6 +6,11 @@
 #include <fstream>
 #include <sstream>
 
+using namespace std;
+using namespace prod;
+using namespace stoe;
+
+
 namespace
 {
   TEST(Tests_Store, Test_addProduct)

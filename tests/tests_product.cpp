@@ -1,5 +1,9 @@
 #include <gtest/gtest.h>
 #include "../src/product.h"
+
+using namespace prod;
+using namespace std;
+
 namespace
 {
   TEST(Tests_Product, Test_empleadoNomina)
