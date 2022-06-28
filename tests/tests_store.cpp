@@ -41,6 +41,94 @@ namespace
     EXPECT_EQ(required, result);
   }
 
+
+
+  TEST(Tests_Store, Test_modifyProductAmount)
+  {
+    /// AAA
+
+    // Arrange - configurar el escenario
+
+    Product *product = new Product(1,
+                                 500,
+                                 "coffee");
+    Store *store = new Store("mira",
+                             "ip",
+                             "location",
+                             "phoneNumber");
+
+    ostringstream streamTest;
+
+    store->addProduct(1, product);
+
+    // Act - ejecute la operación`-
+    store->modifyProductAmount(1,200);
+
+    streamTest << store;
+    string result = streamTest.str();
+    string required = "Store stock: \n[1] - coffee 200\n";
+
+    // Assert - valide los resultados
+    EXPECT_EQ(required, result);
+  }
+   TEST(Tests_Store, Test_modifyProductName)
+  {
+    /// AAA
+
+    // Arrange - configurar el escenario
+
+    Product *product = new Product(1,
+                                 500,
+                                 "coffee");
+    Store *store = new Store("mira",
+                             "ip",
+                             "location",
+                             "phoneNumber");
+
+    ostringstream streamTest;
+
+    store->addProduct(1, product);
+
+    // Act - ejecute la operación`-
+    store->modifyProductName(1,"cookies");
+
+    streamTest << store;
+    string result = streamTest.str();
+    string required = "Store stock: \n[1] - cookies 500\n";
+
+    // Assert - valide los resultados
+    EXPECT_EQ(required, result);
+  }
+
+  TEST(Tests_Store, Test_deleteProduct)
+  {
+    /// AAA
+
+    // Arrange - configurar el escenario
+
+    Product *product = new Product(1,
+                                 500,
+                                 "coffee");
+    Store *store = new Store("mira",
+                             "ip",
+                             "location",
+                             "phoneNumber");
+
+    ostringstream streamTest;
+
+    store->addProduct(1, product);
+
+    // Act - ejecute la operación`-
+    store->deleteProduct(1);
+
+    streamTest << store;
+    string result = streamTest.str();
+    string required = "Store stock: \n[1] - cookies 500\n";
+
+    // Assert - valide los resultados
+    EXPECT_EQ(required, result);
+  }
+
   TEST(Tests_Store, Test__store_load_from_Binary)
   {
 
