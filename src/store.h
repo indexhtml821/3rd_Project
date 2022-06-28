@@ -35,6 +35,7 @@ public:
     // deletePlanilla();
     void addProduct(int id , Product *product);
     void modifyProductAmount(int id,int amount);
+    void modifyProductName(int id,string name);
     string listProducts();
     void deleteProduct(int id);
     void storetoBinaryFile(ostream *storestream);
