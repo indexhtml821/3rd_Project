@@ -5,8 +5,8 @@ all:
 	mkdir -p bin
 	g++ $(FLAGS) src/product.cpp -o obj/product.o
 	g++ $(FLAGS) src/store.cpp -o obj/store.o
-	g++ -shared -o bin/libproduct.so obj/product.o
-	g++ -shared -o bin/libstore.so obj/store.o
+	 
+	g++ -shared -o bin/libstore.so obj/store.o 
 	mkdir -p bin/include
 	cp src/product.h ./bin/include
 	cp src/store.h ./bin/include
