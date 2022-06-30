@@ -7,8 +7,7 @@
 #include <sstream>
 
 using namespace std;
-using namespace prod;
-using namespace stoe;
+
 
 
 namespace
@@ -99,7 +98,34 @@ namespace
     // Assert - valide los resultados
     EXPECT_EQ(required, result);
   }
+  TEST(Tests_Store, Test_listProducts)
+  {
+    /// AAA
 
+    // Arrange - configurar el escenario
+
+    Product *product = new Product(1,
+                                 500,
+                                 "coffee");
+    Store *store = new Store("mira",
+                             "ip",
+                             "location",
+                             "phoneNumber");
+
+    ostringstream streamTest;
+
+    store->addProduct(1, product);
+
+    // Act - ejecute la operación`-
+   
+
+    
+    string result = store->listProducts();
+    string required = "Store stock: \n[1] - cookies 500\n";
+
+    // Assert - valide los resultados
+    EXPECT_EQ(required, result);
+  }
   TEST(Tests_Store, Test_deleteProduct)
   {
     /// AAA
