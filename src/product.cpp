@@ -1,15 +1,14 @@
 #include "product.h"
 #include <string.h>
-using namespace prod;
+
 Product::Product(int productId,
                  int amount,
                  string name)
 {
     this->productId = productId;
     this->amount = amount;
-    char prodName [20]; 
-    strcpy(this->prodName,name.c_str());
-   
+    char prodName[20];
+    strcpy(this->prodName, name.c_str());
 }
 
 Product::Product()
@@ -19,8 +18,13 @@ Product::Product()
     strcpy(this->prodName, "");
 }
 
-ostream& operator << (ostream &o, const Product *product)
+void Product::setName(string name)
 {
-    o << "[" << product->productId << "] - " << product->prodName<< " " <<product->amount ;  
+    strcpy(this->prodName, name.c_str());
+}
+
+ostream &operator<<(ostream &o, const Product *product)
+{
+    o << "[" << product->productId << "] - " << product->prodName << " " << product->amount;
     return o;
 }

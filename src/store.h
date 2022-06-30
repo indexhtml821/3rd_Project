@@ -10,9 +10,7 @@
 #include "product.h"
 
 using namespace std;
-using namespace prod;
 
-namespace stoe{
 class Store
 {
  
@@ -43,5 +41,5 @@ public:
     friend ostream &operator<<(ostream &o, const Store *store);
     
 };
-}
+
 #endif

@@ -5,13 +5,13 @@
 #include <string> // for string class
 using namespace std;
 
-namespace prod{
+
 class Product
 {
 
    public: int productId ;
    public: int amount ;
-    char prodName [20];
+   public: char prodName [20];
 
 public:
     ~Product();
@@ -20,9 +20,10 @@ public:
     int amount ,
     string name);
     Product();
+    void setName(string name);
 
     friend ostream& operator << (ostream &o, const Product *product);
 
 };
-}
+
 #endif

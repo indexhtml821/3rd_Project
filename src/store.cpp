@@ -4,8 +4,7 @@
 #include <iostream>
 #include <sstream>
 
-using namespace stoe;
-using namespace prod;
+
 Store::~Store()
 {
 }
@@ -38,6 +37,12 @@ void Store::modifyProductAmount(int id, int amount)
   stockProducts.at(id)->amount = amount;
 }
 
+void Store::modifyProductName(int id, string name)
+{
+
+  stockProducts.at(id)->setName(name);
+}
+
 string Store:: listProducts(){
 
     auto iter =this->stockProducts.begin();
@@ -50,7 +55,7 @@ string Store:: listProducts(){
         iter++;
        
     }
-
+     list = listing.str();
   return list;
 
 };
@@ -103,6 +108,8 @@ void Store::loadFromBinaryFile(istream *loadStream)
 }
 ostream &operator<<(ostream &o, const Store *store)
 {
+
+  
   o << "Store stock: " << std::endl;
   auto iter = store->stockProducts.begin();
 
