@@ -18,6 +18,10 @@ Product::Product()
     strcpy(this->prodName, "");
 }
 
+int Product::getId()
+{
+    return this->productId;
+}
 void Product::setName(string name)
 {
     strcpy(this->prodName, name.c_str());

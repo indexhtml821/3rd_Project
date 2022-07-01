@@ -20,6 +20,8 @@ public:
     int amount ,
     string name);
     Product();
+
+    int getId();
     void setName(string name);
 
     friend ostream& operator << (ostream &o, const Product *product);
