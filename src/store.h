@@ -31,7 +31,7 @@ public:
           string phoneNumber);
     Store();
     // deletePlanilla();
-    void addProduct(int id , Product *product);
+    void addProduct(Product *product);
     void modifyProductAmount(int id,int amount);
     void modifyProductName(int id,string name);
     string listProducts();

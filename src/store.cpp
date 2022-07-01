@@ -3,10 +3,12 @@
 #include <stdio.h>
 #include <iostream>
 #include <sstream>
-
+#include "exceptionIdNotAllowed.h"
 
 Store::~Store()
 {
+
+  this->stockProducts.erase(stockProducts.begin(),this->stockProducts.end());
 }
 
 Store::Store(string name,
@@ -25,46 +27,100 @@ Store::Store()
 {
 }
 
-void Store::addProduct(int id, Product *product)
+void Store::addProduct(Product *product)
 {
+  if (stockProducts.count(product->getId()))
+  {
 
-  this->stockProducts.insert(std::pair<int, Product *>(id, product));
+    throw ExceptionIdNotAllowed();
+    return;
+  }
+  if ( product->getId() < 0)
+  {
+    throw ExceptionIdNotAllowed();
+    return;
+  }
+
+  this->stockProducts.insert(std::pair<int, Product *>(1, product));
 }
 
 void Store::modifyProductAmount(int id, int amount)
 {
+  if (id < 0)
+  {
+    throw ExceptionIdNotAllowed();
+    return;
+  }
+
+  if (stockProducts.count(id))
+  {
+
+    stockProducts.at(id)->amount = amount;
+    return;
+  }
+  else
+  {
+    throw ExceptionIdNotAllowed();
+    return;
+  }
 
   stockProducts.at(id)->amount = amount;
 }
 
 void Store::modifyProductName(int id, string name)
 {
+  if (id < 0)
+  {
+    throw ExceptionIdNotAllowed();
+    return;
+  }
 
-  stockProducts.at(id)->setName(name);
+  if (stockProducts.count(id))
+  {
+    stockProducts.at(id)->setName(name);
+    return;
+  }
+  else
+  {
+    throw ExceptionIdNotAllowed();
+    return;
+  }
 }
 
-string Store:: listProducts(){
+string Store::listProducts()
+{
 
-    auto iter =this->stockProducts.begin();
-    string list= "";
-    ostringstream listing;
+  auto iter = this->stockProducts.begin();
+  string list = "";
+  ostringstream listing;
 
-    while (iter != this->stockProducts.end() )
-    {
-      listing << iter->second << endl;
-        iter++;
-       
-    }
-     list = listing.str();
+  while (iter != this->stockProducts.end())
+  {
+    listing << iter->second << endl;
+    iter++;
+  }
+  list = listing.str();
   return list;
-
 };
-
 
 void Store::deleteProduct(int id)
 {
+  if (id < 0)
+  {
+    throw ExceptionIdNotAllowed();
+    return;
+  }
 
-  stockProducts.erase(id);
+  if (stockProducts.count(id))
+  {
+    stockProducts.erase(id);
+    return;
+  }
+  else
+  {
+    throw ExceptionIdNotAllowed();
+    return;
+  }
 }
 
 void Store::storetoBinaryFile(ostream *storestream)
@@ -98,18 +154,16 @@ void Store::loadFromBinaryFile(istream *loadStream)
   loadStream->read((char *)this->location, sizeof(this->location));
   loadStream->read((char *)this->phoneNumber, sizeof(this->phoneNumber));
 
-   for (int indice = 0; indice < productsAmount; indice++)
+  for (int indice = 0; indice < productsAmount; indice++)
   {
     Product *product = new Product();
     loadStream->read((char *)product, sizeof(Product)); // variable para guardar y cuántos bytes leo
-    int id = product->productId;
-    this->addProduct(id, product);
+    this->addProduct(product);
   }
 }
 ostream &operator<<(ostream &o, const Store *store)
 {
 
-  
   o << "Store stock: " << std::endl;
   auto iter = store->stockProducts.begin();
 
