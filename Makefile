@@ -1,4 +1,4 @@
-FLAGS = -g -c --std=c++17
+FLAGS = -g -fPIC -c --std=c++17
 
 all:
 	mkdir -p obj
