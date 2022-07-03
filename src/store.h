@@ -19,7 +19,7 @@ class Store
 public:
 
   map<int, Product *> stockProducts;
-    char storeName[20];
+    char storeName[15];
     char ip[24];
     char location[24];
     char phoneNumber[8];
@@ -31,6 +31,7 @@ public:
           string phoneNumber);
     Store();
     // deletePlanilla();
+    
     void addProduct(Product *product);
     void modifyProductAmount(int id,int amount);
     void modifyProductName(int id,string name);

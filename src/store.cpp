@@ -41,7 +41,7 @@ void Store::addProduct(Product *product)
     return;
   }
 
-  this->stockProducts.insert(std::pair<int, Product *>(1, product));
+  this->stockProducts.insert(std::pair<int, Product *>(product->getId(), product));
 }
 
 void Store::modifyProductAmount(int id, int amount)
@@ -55,7 +55,7 @@ void Store::modifyProductAmount(int id, int amount)
   if (stockProducts.count(id))
   {
 
-    stockProducts.at(id)->setAmount(id);
+    stockProducts.at(id)->setAmount(amount);
     return;
   }
   else
@@ -140,10 +140,10 @@ void Store::storetoBinaryFile(ostream *storestream)
 
 void Store::loadFromBinaryFile(istream *loadStream)
 {
-
+  int headerSize = sizeof(this->storeName) + sizeof(this->ip) + sizeof(this->location) + sizeof(this->phoneNumber);
   loadStream->seekg(0, std::ios::end);
   int fileByteAmount = loadStream->tellg();
-  int productsAmount = fileByteAmount / sizeof(Product);
+  int productsAmount = (fileByteAmount - headerSize) / sizeof(Product);
 
   // Leer cada empleado
   loadStream->seekg(0, std::ios::beg); // Empezar desde el principio del archivo
