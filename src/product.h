@@ -5,27 +5,26 @@
 #include <string> // for string class
 using namespace std;
 
-
 class Product
 {
 
-   public: int productId ;
-   public: int amount ;
-   public: char prodName [20];
+    int productId;
+    int amount;
+    char prodName[20];
 
 public:
     ~Product();
 
-    Product( int productId ,
-    int amount ,
-    string name);
+    Product(int productId,
+            int amount,
+            string name);
     Product();
 
     int getId();
     void setName(string name);
+    void setAmount(int amount);
 
-    friend ostream& operator << (ostream &o, const Product *product);
-
+    friend ostream &operator<<(ostream &o, const Product *product);
 };
 
 #endif

@@ -27,6 +27,11 @@ void Product::setName(string name)
     strcpy(this->prodName, name.c_str());
 }
 
+void Product::setAmount(int amount)
+{
+    this->amount = amount;
+}
+
 ostream &operator<<(ostream &o, const Product *product)
 {
     o << "[" << product->productId << "] - " << product->prodName << " " << product->amount;
