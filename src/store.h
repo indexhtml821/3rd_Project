@@ -20,7 +20,7 @@ public:
 
   map<int, Product *> stockProducts;
     char storeName[15];
-    char ip[24];
+    char internetAddress[24];
     char location[24];
     char phoneNumber[8];
  

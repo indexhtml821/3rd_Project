@@ -12,13 +12,13 @@ Store::~Store()
 }
 
 Store::Store(string name,
-             string ip,
+             string internetAddress,
              string location,
              string phoneNumber)
 {
 
   strcpy(this->storeName, name.c_str());
-  strcpy(this->ip, ip.c_str());
+  strcpy(this->internetAddress, internetAddress.c_str());
   strcpy(this->location, location.c_str());
   strcpy(this->phoneNumber, phoneNumber.c_str());
 }
@@ -124,7 +124,7 @@ void Store::deleteProduct(int id)
 void Store::storetoBinaryFile(ostream *storestream)
 {
   storestream->write(this->storeName, sizeof(this->storeName));
-  storestream->write(this->ip, sizeof(this->ip));
+  storestream->write(this->internetAddress, sizeof(this->internetAddress));
   storestream->write(this->location, sizeof(location));
   storestream->write(this->phoneNumber, sizeof(phoneNumber));
 
@@ -140,7 +140,7 @@ void Store::storetoBinaryFile(ostream *storestream)
 
 void Store::loadFromBinaryFile(istream *loadStream)
 {
-  int headerSize = sizeof(this->storeName) + sizeof(this->ip) + sizeof(this->location) + sizeof(this->phoneNumber);
+  int headerSize = sizeof(this->storeName) + sizeof(this->internetAddress) + sizeof(this->location) + sizeof(this->phoneNumber);
   loadStream->seekg(0, std::ios::end);
   int fileByteAmount = loadStream->tellg();
   int productsAmount = (fileByteAmount - headerSize) / sizeof(Product);
@@ -148,7 +148,7 @@ void Store::loadFromBinaryFile(istream *loadStream)
   // Leer cada empleado
   loadStream->seekg(0, std::ios::beg); // Empezar desde el principio del archivo
   loadStream->read((char *)this->storeName, sizeof(this->storeName));
-  loadStream->read((char *)this->ip, sizeof(this->ip));
+  loadStream->read((char *)this->internetAddress, sizeof(this->internetAddress));
   loadStream->read((char *)this->location, sizeof(this->location));
   loadStream->read((char *)this->phoneNumber, sizeof(this->phoneNumber));
 
