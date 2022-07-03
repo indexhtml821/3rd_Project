@@ -1,10 +1,18 @@
 #include "product.h"
 #include <string.h>
+#include "exceptionValueOverflowMember.h"
 
 Product::Product(int productId,
                  int amount,
                  string name)
 {
+
+    if (sizeof(this->prodName) < name.length())
+    {
+        throw ExceptionValueOverflowMember();
+        return;
+    }
+
     this->productId = productId;
     this->amount = amount;
     char prodName[20];
@@ -24,11 +32,13 @@ int Product::getId()
 }
 void Product::setName(string name)
 {
+
     strcpy(this->prodName, name.c_str());
 }
 
 void Product::setAmount(int amount)
 {
+
     this->amount = amount;
 }
 
