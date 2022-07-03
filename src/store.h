@@ -2,6 +2,7 @@
 #define STORE_H
 
 #include <map>
+#include <vector>
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -35,7 +36,8 @@ public:
     void addProduct(Product *product);
     void modifyProductAmount(int id,int amount);
     void modifyProductName(int id,string name);
-    string listProducts();
+    vector<Product*> listProducts();
+    string stringProducts();
     void deleteProduct(int id);
     void storetoBinaryFile(ostream *storestream);
     void loadFromBinaryFile(istream *streamEntrada);

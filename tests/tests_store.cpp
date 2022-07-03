@@ -54,35 +54,29 @@ namespace
                                     100,
                                     "donuts");
 
-Product *product2 = new Product(1,
+    Product *product2 = new Product(1,
                                     100,
                                     "donuts");
-
-                                    
 
     Store *store = new Store("mira",
                              "ip",
                              "location",
                              "phoneNumber");
 
-    
-
     // Act - ejecute la operación`-
-    store->addProduct( product);
-   
+    store->addProduct(product);
+
     EXPECT_THROW({
-    store->addProduct(product1);
+      store->addProduct(product1);
     },
                  ExceptionIdNotAllowed);
 
-
-EXPECT_THROW({
-    store->addProduct( product2);
+    EXPECT_THROW({
+      store->addProduct(product2);
     },
                  ExceptionIdNotAllowed);
 
     // Assert - valide los resultados
-   
   }
 
   TEST(Tests_Store, Test_modifyProductAmount)
@@ -141,7 +135,47 @@ EXPECT_THROW({
     // Assert - valide los resultados
     EXPECT_EQ(required, result);
   }
+
   TEST(Tests_Store, Test_listProducts)
+  {
+    /// AAA
+
+    // Arrange - configurar el escenario
+
+    Product *product = new Product(1,
+                                   500,
+                                   "coffee");
+
+    Product *product1 = new Product(2,
+                                    500,
+                                    "cookies");
+    Store *store = new Store("mira",
+                             "ip",
+                             "location",
+                             "phoneNumber");
+
+    ostringstream streamTest;
+
+    store->addProduct(product);
+    store->addProduct(product1);
+
+    // Act - ejecute la operación`-
+
+    vector<Product *> vectorResult = store->listProducts();
+    for (Product *productRead : vectorResult)
+    {
+
+      streamTest << productRead << endl;
+    }
+
+    string result= streamTest.str();
+    string required = "[1] - coffee 500\n[2] - cookies 500\n";
+
+    // Assert - valide los resultados
+    EXPECT_EQ(required, result);
+  }
+
+  TEST(Tests_Store, Test_stringProducts)
   {
     /// AAA
 
@@ -157,16 +191,17 @@ EXPECT_THROW({
 
     ostringstream streamTest;
 
-    store->addProduct( product);
+    store->addProduct(product);
 
     // Act - ejecute la operación`-
 
-    string result = store->listProducts();
+    string result = store->stringProducts();
     string required = "[1] - coffee 500\n";
 
     // Assert - valide los resultados
     EXPECT_EQ(required, result);
   }
+
   TEST(Tests_Store, Test_deleteProduct)
   {
     /// AAA
@@ -222,7 +257,7 @@ EXPECT_THROW({
     // Act - operation execution
 
     // writing the binary file
-    storeExpected->addProduct( product);
+    storeExpected->addProduct(product);
 
     fileTest.open("test_file.dat", ios::out | ios::binary);
 

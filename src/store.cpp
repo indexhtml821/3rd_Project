@@ -85,7 +85,21 @@ void Store::modifyProductName(int id, string name)
   }
 }
 
-string Store::listProducts()
+vector<Product *> Store::listProducts()
+{
+
+  auto iter = this->stockProducts.begin();
+
+  vector<Product *> vectorProducts;
+  while (iter != this->stockProducts.end())
+  {
+    vectorProducts.push_back(iter->second);
+    iter++;
+  }
+
+  return vectorProducts;
+}
+string Store::stringProducts()
 {
 
   auto iter = this->stockProducts.begin();
