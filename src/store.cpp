@@ -8,7 +8,7 @@
 Store::~Store()
 {
 
-  this->stockProducts.erase(stockProducts.begin(),this->stockProducts.end());
+  this->stockProducts.erase(stockProducts.begin(), this->stockProducts.end());
 }
 
 Store::Store(string name,
@@ -35,7 +35,7 @@ void Store::addProduct(Product *product)
     throw ExceptionIdNotAllowed();
     return;
   }
-  if ( product->getId() < 0)
+  if (product->getId() < 0)
   {
     throw ExceptionIdNotAllowed();
     return;
@@ -55,7 +55,7 @@ void Store::modifyProductAmount(int id, int amount)
   if (stockProducts.count(id))
   {
 
-    stockProducts.at(id)->amount = amount;
+    stockProducts.at(id)->setAmount(id);
     return;
   }
   else
@@ -63,8 +63,6 @@ void Store::modifyProductAmount(int id, int amount)
     throw ExceptionIdNotAllowed();
     return;
   }
-
-  stockProducts.at(id)->amount = amount;
 }
 
 void Store::modifyProductName(int id, string name)
@@ -161,6 +159,7 @@ void Store::loadFromBinaryFile(istream *loadStream)
     this->addProduct(product);
   }
 }
+
 ostream &operator<<(ostream &o, const Store *store)
 {
 
