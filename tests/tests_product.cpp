@@ -10,18 +10,18 @@ namespace
   {
     /// AAA
 
-    // Arrange - 
+    // Arrange -
 
     Product *coffee = new Product(1,
                                   500,
                                   "coffee");
 
-    // Act - 
+    // Act -
 
     int result = coffee->getId();
     int required = 1;
     delete coffee;
-    // Assert - 
+    // Assert -
     EXPECT_EQ(result, required);
   }
 
@@ -29,14 +29,14 @@ namespace
   {
     /// AAA
 
-    // Arrange - 
+    // Arrange -
 
     Product *coffee = new Product(1,
                                   500,
                                   "coffee");
 
-    // Act - 
-    // Assert - 
+    // Act -
+    // Assert -
     EXPECT_THROW({ coffee->setName("cofeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"); }, ExceptionValueOverflowMember);
   }
 
@@ -44,34 +44,34 @@ namespace
   {
     /// AAA
 
-    // Arrange - 
+    // Arrange -
 
     EXPECT_THROW({ Product *coffee = new Product(1,
                                                  500,
                                                  "coffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"); }, ExceptionValueOverflowMember);
 
-    // Act - 
+    // Act -
 
-    // Assert - 
+    // Assert -
   }
 
   TEST(Tests_Product, Test_outputOperatorsOverload)
   {
     /// AAA
 
-    // Arrange - 
+    // Arrange -
     ostringstream streamTest;
     Product *coffe = new Product(1,
                                  500,
                                  "coffee");
 
-    // Act - 
+    // Act -
     streamTest << coffe;
 
     string result = streamTest.str();
     string required = "[1] - coffee 500";
 
-    // Assert - 
+    // Assert -
     EXPECT_EQ(result, required);
   }
 
