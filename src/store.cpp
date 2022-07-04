@@ -99,21 +99,6 @@ vector<Product *> Store::listProducts()
 
   return vectorProducts;
 }
-string Store::stringProducts()
-{
-
-  auto iter = this->stockProducts.begin();
-  string list = "";
-  ostringstream listing;
-
-  while (iter != this->stockProducts.end())
-  {
-    listing << iter->second << endl;
-    iter++;
-  }
-  list = listing.str();
-  return list;
-};
 
 void Store::deleteProduct(int id)
 {

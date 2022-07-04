@@ -37,7 +37,6 @@ public:
     void modifyProductAmount(int id,int amount);
     void modifyProductName(int id,string name);
     vector<Product*> listProducts();
-    string stringProducts();
     void deleteProduct(int id);
     void storetoBinaryFile(ostream *storestream);
     void loadFromBinaryFile(istream *streamEntrada);

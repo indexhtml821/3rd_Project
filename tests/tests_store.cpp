@@ -168,35 +168,8 @@ namespace
       streamTest << productRead << endl;
     }
 
-    string result= streamTest.str();
+    string result = streamTest.str();
     string required = "[1] - coffee 500\n[2] - cookies 500\n";
-
-    // Assert - valide los resultados
-    EXPECT_EQ(required, result);
-  }
-
-  TEST(Tests_Store, Test_stringProducts)
-  {
-    /// AAA
-
-    // Arrange - configurar el escenario
-
-    Product *product = new Product(1,
-                                   500,
-                                   "coffee");
-    Store *store = new Store("mira",
-                             "ip",
-                             "location",
-                             "phoneNumber");
-
-    ostringstream streamTest;
-
-    store->addProduct(product);
-
-    // Act - ejecute la operación`-
-
-    string result = store->stringProducts();
-    string required = "[1] - coffee 500\n";
 
     // Assert - valide los resultados
     EXPECT_EQ(required, result);
