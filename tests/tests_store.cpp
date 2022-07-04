@@ -15,7 +15,7 @@ namespace
   {
     /// AAA
 
-    // Arrange - configurar el escenario
+    // Arrange - 
 
     Product *product = new Product(1,
                                    500,
@@ -29,22 +29,22 @@ namespace
 
     store->addProduct(product);
 
-    // Act - ejecute la operación`-
+    // Act - 
 
     streamTest << store;
     delete store;
     string result = streamTest.str();
     string required = "Store stock: \n[1] - coffee 500\n";
 
-    // Assert - valide los resultados
+    // Assert - 
     EXPECT_EQ(required, result);
   }
 
-  TEST(Tests_Store, Test_addProductException)
+  TEST(Tests_Store, Test_addProductExceptionIdNotAllowed)
   {
     /// AAA
 
-    // Arrange - configurar el escenario
+    // Arrange - 
 
     Product *product = new Product(1,
                                    500,
@@ -63,7 +63,7 @@ namespace
                              "location",
                              "phoneNumber");
 
-    // Act - ejecute la operación`-
+    // Act - 
     store->addProduct(product);
 
     EXPECT_THROW({
@@ -76,14 +76,14 @@ namespace
     },
                  ExceptionIdNotAllowed);
 
-    // Assert - valide los resultados
+    // Assert - 
   }
 
   TEST(Tests_Store, Test_modifyProductAmount)
   {
     /// AAA
 
-    // Arrange - configurar el escenario
+    // Arrange - 
 
     Product *product = new Product(1,
                                    500,
@@ -97,21 +97,21 @@ namespace
 
     store->addProduct(product);
 
-    // Act - ejecute la operación`-
+    // Act - 
     store->modifyProductAmount(1, 200);
 
     streamTest << store;
     string result = streamTest.str();
     string required = "Store stock: \n[1] - coffee 200\n";
 
-    // Assert - valide los resultados
+    // Assert - 
     EXPECT_EQ(required, result);
   }
   TEST(Tests_Store, Test_modifyProductName)
   {
     /// AAA
 
-    // Arrange - configurar el escenario
+    // Arrange - 
 
     Product *product = new Product(1,
                                    500,
@@ -125,14 +125,14 @@ namespace
 
     store->addProduct(product);
 
-    // Act - ejecute la operación`-
+    // Act - 
     store->modifyProductName(1, "cookies");
 
     streamTest << store;
     string result = streamTest.str();
     string required = "Store stock: \n[1] - cookies 500\n";
 
-    // Assert - valide los resultados
+    // Assert - 
     EXPECT_EQ(required, result);
   }
 
@@ -140,7 +140,7 @@ namespace
   {
     /// AAA
 
-    // Arrange - configurar el escenario
+    // Arrange - 
 
     Product *product = new Product(1,
                                    500,
@@ -159,7 +159,7 @@ namespace
     store->addProduct(product);
     store->addProduct(product1);
 
-    // Act - ejecute la operación`-
+    // Act - 
 
     vector<Product *> vectorResult = store->listProducts();
     for (Product *productRead : vectorResult)
@@ -171,7 +171,7 @@ namespace
     string result = streamTest.str();
     string required = "[1] - coffee 500\n[2] - cookies 500\n";
 
-    // Assert - valide los resultados
+    // Assert - 
     EXPECT_EQ(required, result);
   }
 
@@ -179,7 +179,7 @@ namespace
   {
     /// AAA
 
-    // Arrange - configurar el escenario
+    // Arrange - 
 
     Product *product = new Product(1,
                                    500,
@@ -193,14 +193,14 @@ namespace
 
     store->addProduct(product);
 
-    // Act - ejecute la operación`-
+    // Act - 
     store->deleteProduct(1);
 
     streamTest << store;
     string result = streamTest.str();
     string required = "Store stock: \n";
 
-    // Assert - valide los resultados
+    // Assert - 
     EXPECT_EQ(required, result);
   }
 
@@ -210,7 +210,7 @@ namespace
     // Writing the binary file
     /// AAA
 
-    // Arrange - test scenario configuration
+    // Arrange - 
 
     Product *product = new Product(1,
                                    500,
@@ -227,7 +227,7 @@ namespace
     ostringstream streamOutputReadedStore;
 
     ostringstream streamStoreOutputExpected;
-    // Act - operation execution
+    // Act - 
 
     // writing the binary file
     storeExpected->addProduct(product);
@@ -236,7 +236,7 @@ namespace
 
     if (!fileTest.is_open())
     {
-      cerr << "No se pudo abrir archivo archivo_test.dat para escribir los datos";
+      cerr << " test_file.dat can´t be opened to write the data";
       FAIL();
     }
 
@@ -250,7 +250,7 @@ namespace
 
     if (!fileLoadTest.is_open())
     {
-      cerr << "No se pudo abrir archivo archivo_test.dat para leer los datos";
+      cerr << "test_file.dat can´t be opened to read the data";
       FAIL();
     }
 
@@ -265,8 +265,8 @@ namespace
 
     string required = "Store stock: \n[1] - coffee 500\n";
     string stringStoreOutputExpected = streamStoreOutputExpected.str();
-    // Assert - check results
-    // Primero, validar la salida de la planilla esperada sea correcta
+    // Assert -
+   
     EXPECT_EQ(required, stringStoreOutputExpected);
 
     string resultstringStoreOutputExpectedFromFile = streamStoreOutputExpected.str();
