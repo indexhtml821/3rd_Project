@@ -2,6 +2,9 @@
 #include <string.h>
 #include "exceptionValueOverflowMember.h"
 
+Product::~Product()
+{
+}
 Product::Product(int productId,
                  int amount,
                  string name)
@@ -32,7 +35,7 @@ int Product::getId()
 }
 void Product::setName(string name)
 {
- if (sizeof(this->prodName) < name.length())
+    if (sizeof(this->prodName) < name.length())
     {
         throw ExceptionValueOverflowMember();
         return;
