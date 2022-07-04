@@ -32,7 +32,11 @@ int Product::getId()
 }
 void Product::setName(string name)
 {
-
+ if (sizeof(this->prodName) < name.length())
+    {
+        throw ExceptionValueOverflowMember();
+        return;
+    }
     strcpy(this->prodName, name.c_str());
 }
 

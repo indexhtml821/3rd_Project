@@ -6,14 +6,14 @@
 
 class ExceptionIdNotAllowed : public std::exception
 {
-    public:
+public:
     ExceptionIdNotAllowed() noexcept = default;
     ~ExceptionIdNotAllowed() = default;
 
-    virtual const char* what() const noexcept {
+    virtual const char *what() const noexcept
+    {
         return "Product id doesnt exists/not allowed";
     }
-
 };
 
 #endif

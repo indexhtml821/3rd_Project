@@ -24,7 +24,7 @@ public:
     void setName(string name);
     void setAmount(int amount);
 
-    friend ostream &operator<<(ostream &o, const Product *product);
+    friend ostream &operator << (ostream &o, const Product *product);
 };
 
 #endif
