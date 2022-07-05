@@ -2,6 +2,7 @@
 #include "../src/product.h"
 #include "../src/store.h"
 #include "../src/exceptionIdNotAllowed.h"
+#include "../src/exceptionProductNameIsTaken.h"
 
 #include <string>
 #include <fstream>
@@ -79,6 +80,60 @@ namespace
     // Assert -
   }
 
+  TEST(Tests_Store, Test_addProductExceptionProductNameIsTaken)
+  {
+    /// AAA
+
+    // Arrange -
+
+    Product *product = new Product(1,
+                                   500,
+                                   "coffee");
+
+    Product *product1 = new Product(2,
+                                    100,
+                                    "Coffee");
+
+     Store *store = new Store("mira",
+                             "ip",
+                             "location",
+                             "phoneNumber");
+
+    // Act -
+    store->addProduct(product);
+
+    // Assert -
+    EXPECT_THROW({
+      store->addProduct(product1);
+    },
+                 ExceptionProductNameIsTaken);
+
+   
+  }
+
+  TEST(Tests_Store, Test_productAlreadyExists)
+  {
+    /// AAA
+
+    // Arrange -
+
+    Product *product = new Product(1,
+                                   500,
+                                   "coffee");
+
+    Store *store = new Store("mira",
+                             "ip",
+                             "location",
+                             "phoneNumber");
+
+    // Act -
+    store->addProduct(product);
+    bool result = store->productAlreadyExists("Coffee");
+    bool required = true;
+
+    // Assert -
+    EXPECT_EQ(required, result);
+  }
   TEST(Tests_Store, Test_modifyProductAmount)
   {
     /// AAA
