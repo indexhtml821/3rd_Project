@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include "exceptionIdNotAllowed.h"
+#include "exceptionProductNameIsTaken.h"
 
 Store::~Store()
 {
@@ -29,6 +30,8 @@ Store::Store()
 
 void Store::addProduct(Product *product)
 {
+
+  string prodName = product->getName();
   if (stockProducts.count(product->getId()))
   {
 
@@ -40,10 +43,31 @@ void Store::addProduct(Product *product)
     throw ExceptionIdNotAllowed();
     return;
   }
-
+  if (productAlreadyExists(prodName))
+  {
+    throw ExceptionProductNameIsTaken();
+    return;
+  }
   this->stockProducts.insert(std::pair<int, Product *>(product->getId(), product));
 }
+bool Store::productAlreadyExists(string prodName)
+{
 
+  auto iter = stockProducts.begin();
+
+  while (iter != stockProducts.end())
+  {
+
+    string stockProdName = iter->second->getName();
+    if (strcasecmp(stockProdName.c_str(), prodName.c_str()) == 0)
+    {
+      return true;
+    }
+
+    iter++;
+  }
+  return false;
+}
 void Store::modifyProductAmount(int id, int amount)
 {
   if (id < 0)
