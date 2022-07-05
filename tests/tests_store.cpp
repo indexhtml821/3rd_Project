@@ -33,6 +33,7 @@ namespace
     // Act -
 
     streamTest << store;
+
     delete store;
     string result = streamTest.str();
     string required = "Store stock: \n[1] - coffee 500\n";
@@ -55,10 +56,6 @@ namespace
                                     100,
                                     "donuts");
 
-    Product *product2 = new Product(1,
-                                    100,
-                                    "donuts");
-
     Store *store = new Store("mira",
                              "ip",
                              "location",
@@ -67,17 +64,12 @@ namespace
     // Act -
     store->addProduct(product);
 
+    // Assert -
+
     EXPECT_THROW({
       store->addProduct(product1);
     },
                  ExceptionIdNotAllowed);
-
-    EXPECT_THROW({
-      store->addProduct(product2);
-    },
-                 ExceptionIdNotAllowed);
-
-    // Assert -
   }
 
   TEST(Tests_Store, Test_addProductExceptionProductNameIsTaken)
@@ -94,7 +86,7 @@ namespace
                                     100,
                                     "Coffee");
 
-     Store *store = new Store("mira",
+    Store *store = new Store("mira",
                              "ip",
                              "location",
                              "phoneNumber");
@@ -108,7 +100,7 @@ namespace
     },
                  ExceptionProductNameIsTaken);
 
-   
+    delete store;
   }
 
   TEST(Tests_Store, Test_productAlreadyExists)
@@ -131,6 +123,7 @@ namespace
     bool result = store->productAlreadyExists("Coffee");
     bool required = true;
 
+    delete store;
     // Assert -
     EXPECT_EQ(required, result);
   }
@@ -159,9 +152,12 @@ namespace
     string result = streamTest.str();
     string required = "Store stock: \n[1] - coffee 200\n";
 
+    delete store;
+
     // Assert -
     EXPECT_EQ(required, result);
   }
+
   TEST(Tests_Store, Test_modifyProductName)
   {
     /// AAA
@@ -186,6 +182,8 @@ namespace
     streamTest << store;
     string result = streamTest.str();
     string required = "Store stock: \n[1] - cookies 500\n";
+
+    delete store;
 
     // Assert -
     EXPECT_EQ(required, result);
@@ -226,6 +224,8 @@ namespace
     string result = streamTest.str();
     string required = "[1] - coffee 500\n[2] - cookies 500\n";
 
+    delete store;
+
     // Assert -
     EXPECT_EQ(required, result);
   }
@@ -255,6 +255,7 @@ namespace
     string result = streamTest.str();
     string required = "Store stock: \n";
 
+    delete store;
     // Assert -
     EXPECT_EQ(required, result);
   }
@@ -267,9 +268,11 @@ namespace
 
     // Arrange -
 
-    Product *product = new Product(1,
-                                   500,
-                                   "coffee");
+  
+    Product *prod = new Product(1,
+                                500,
+                                "coffee");
+
     Store *storeExpected = new Store("mira",
                                      "ip",
                                      "location",
@@ -285,7 +288,7 @@ namespace
     // Act -
 
     // writing the binary file
-    storeExpected->addProduct(product);
+    storeExpected->addProduct(prod);
 
     fileTest.open("test_file.dat", ios::out | ios::binary);
 
