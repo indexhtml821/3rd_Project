@@ -30,6 +30,7 @@ public:
   // deletePlanilla();
 
   void addProduct(Product *product);
+  bool productAlreadyExists(string prodName);
   void modifyProductAmount(int id, int amount);
   void modifyProductName(int id, string name);
   vector<Product *> listProducts();
