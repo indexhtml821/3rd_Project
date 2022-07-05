@@ -43,6 +43,11 @@ void Product::setName(string name)
     strcpy(this->prodName, name.c_str());
 }
 
+string Product::getName()
+{
+    return this->prodName;
+}
+
 void Product::setAmount(int amount)
 {
 

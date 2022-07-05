@@ -22,9 +22,10 @@ public:
 
     int getId();
     void setName(string name);
+    string getName();
     void setAmount(int amount);
 
-    friend ostream &operator << (ostream &o, const Product *product);
+    friend ostream &operator<<(ostream &o, const Product *product);
 };
 
 #endif
