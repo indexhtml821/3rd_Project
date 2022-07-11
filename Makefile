@@ -6,7 +6,7 @@ all:
 	g++ $(FLAGS) src/product.cpp -o obj/product.o
 	g++ $(FLAGS) src/store.cpp -o obj/store.o
 	 
-	g++ -shared -o bin/libstore.so obj/store.o 
+	g++ -shared -o bin/libstore.so obj/store.o obj/product.o
 	mkdir -p bin/include
 	cp src/product.h ./bin/include
 	cp src/store.h ./bin/include
